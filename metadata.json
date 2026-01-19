@@ -1,0 +1,7 @@
+{
+  "name": "AgroLens AI: Plant Doctor",
+  "description": "A smart AI system for farmers and gardeners to detect pests, diseases, and nutrient deficiencies in crops using Gemini 3 vision capabilities.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
