@@ -14,8 +14,8 @@ const SeverityBadge: React.FC<{ severity: Severity }> = ({ severity }) => {
   };
 
   return (
-    <span className={`px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wider ${styles[severity]}`}>
-      {severity} Severity
+    <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${styles[severity]}`}>
+      {severity} Risk
     </span>
   );
 };
@@ -41,8 +41,8 @@ const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
               <i className={`fa-solid ${getIssueIcon()} text-white text-2xl`}></i>
             </div>
             <div>
+              <p className="text-emerald-100 text-xs font-bold uppercase tracking-wider">{result.plantName}</p>
               <h2 className="text-white text-xl font-bold">{result.diagnosis}</h2>
-              <p className="text-emerald-100 text-sm font-medium">{result.plantName}</p>
             </div>
           </div>
           <SeverityBadge severity={result.severity} />
@@ -52,14 +52,14 @@ const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
           <div className="space-y-6">
             <section>
               <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
-                <i className="fa-solid fa-magnifying-glass text-emerald-600"></i>
-                Visual Symptoms
+                <i className="fa-solid fa-eye text-emerald-600"></i>
+                Signs of Trouble
               </h3>
               <ul className="space-y-2">
                 {result.symptoms.map((s, i) => (
                   <li key={i} className="flex items-start gap-3 text-gray-700 bg-gray-50 p-2 rounded-lg">
-                    <i className="fa-solid fa-circle-check text-emerald-500 mt-1 text-xs"></i>
-                    <span>{s}</span>
+                    <i className="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i>
+                    <span className="text-sm">{s}</span>
                   </li>
                 ))}
               </ul>
@@ -68,9 +68,9 @@ const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
             <section>
               <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
                 <i className="fa-solid fa-comment-dots text-emerald-600"></i>
-                The AI's Explanation
+                What’s Happening
               </h3>
-              <p className="text-gray-600 leading-relaxed italic border-l-4 border-emerald-200 pl-4 py-1">
+              <p className="text-gray-600 leading-relaxed italic border-l-4 border-emerald-200 pl-4 py-1 text-sm">
                 "{result.explanation}"
               </p>
             </section>
@@ -79,13 +79,13 @@ const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
           <div className="space-y-6">
             <section className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
               <h3 className="text-emerald-900 font-bold mb-4 flex items-center gap-2">
-                <i className="fa-solid fa-toolbox text-emerald-600"></i>
-                Treatment Plan
+                <i className="fa-solid fa-wrench text-emerald-600"></i>
+                How to Fix It
               </h3>
               <div className="space-y-4">
                 {result.treatmentPlan.map((step, i) => (
                   <div key={i} className="flex gap-4">
-                    <span className="flex-shrink-0 w-7 h-7 bg-emerald-600 text-white rounded-full flex items-center justify-center text-xs font-bold">
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-600 text-white rounded-full flex items-center justify-center text-xs font-bold">
                       {i + 1}
                     </span>
                     <p className="text-gray-700 text-sm leading-relaxed">{step}</p>
@@ -96,8 +96,8 @@ const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
 
             <section className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
               <h3 className="text-blue-900 font-bold mb-4 flex items-center gap-2">
-                <i className="fa-solid fa-shield-halved text-blue-600"></i>
-                Prevention Strategy
+                <i className="fa-solid fa-shield-heart text-blue-600"></i>
+                Keep it Healthy Next Time
               </h3>
               <ul className="space-y-3">
                 {result.preventionTips.map((tip, i) => (
@@ -115,10 +115,10 @@ const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
       <div className="text-center p-4">
         <button 
           onClick={() => window.location.reload()}
-          className="text-emerald-700 font-semibold hover:underline flex items-center justify-center gap-2 mx-auto"
+          className="bg-gray-100 px-6 py-2 rounded-xl text-gray-700 font-bold hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 mx-auto"
         >
           <i className="fa-solid fa-rotate-left"></i>
-          Start New Analysis
+          Check Another Plant
         </button>
       </div>
     </div>

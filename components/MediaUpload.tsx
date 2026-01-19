@@ -12,7 +12,6 @@ interface MediaUploadProps {
 const MediaUpload: React.FC<MediaUploadProps> = ({ onMediaAdded, mediaItems, onRemove, disabled }) => {
   const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      // FIX: Explicitly cast to File[] to prevent 'unknown' type inference which causes errors with URL.createObjectURL and file properties
       const newFiles = Array.from(e.target.files) as File[];
       const newItems: MediaItem[] = newFiles.map(file => ({
         file,
@@ -25,7 +24,7 @@ const MediaUpload: React.FC<MediaUploadProps> = ({ onMediaAdded, mediaItems, onR
 
   return (
     <div className="space-y-4">
-      <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-colors ${
+      <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all ${
         disabled ? 'bg-gray-100 border-gray-300' : 'bg-emerald-50 border-emerald-200 hover:border-emerald-400'
       }`}>
         <input
@@ -36,19 +35,21 @@ const MediaUpload: React.FC<MediaUploadProps> = ({ onMediaAdded, mediaItems, onR
           disabled={disabled}
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
         />
-        <div className="flex flex-col items-center justify-center text-center space-y-3">
+        <div className="flex flex-col items-center justify-center text-center space-y-4">
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <i className="fa-solid fa-cloud-arrow-up text-emerald-500 text-2xl"></i>
+            <i className="fa-solid fa-camera text-emerald-500 text-2xl"></i>
           </div>
           <div>
-            <p className="text-lg font-semibold text-emerald-900">Upload Plant Photos or Videos</p>
-            <p className="text-sm text-emerald-600">Snap a clear photo of the leaves, stems, or pests</p>
+            <p className="text-lg font-bold text-emerald-900">Upload Photos or Videos</p>
+            <p className="text-sm text-emerald-600 max-w-xs mx-auto">
+              Snap a clear, bright photo of the leaves, stems, or fruit where the problem is.
+            </p>
           </div>
           <button 
             type="button"
-            className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors"
+            className="px-6 py-2 bg-emerald-600 text-white rounded-xl text-sm font-bold hover:bg-emerald-700 transition-colors shadow-md"
           >
-            Select Files
+            Select from Gallery
           </button>
         </div>
       </div>

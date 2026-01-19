@@ -10,12 +10,12 @@ const Header: React.FC = () => {
             <i className="fa-solid fa-leaf text-emerald-600 text-2xl"></i>
           </div>
           <div>
-            <h1 className="text-xl font-bold tracking-tight">AgroLens AI</h1>
-            <p className="text-xs text-emerald-100 font-medium">Digital Plant Health Assistant</p>
+            <h1 className="text-xl font-bold tracking-tight">PlantDoctor</h1>
+            <p className="text-xs text-emerald-100 font-medium">Your Digital Crop Assistant</p>
           </div>
         </div>
         <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <span className="bg-emerald-600 px-3 py-1 rounded-full text-xs">Powered by Gemini 3</span>
+          <span className="bg-emerald-600/50 px-3 py-1 rounded-full text-xs border border-emerald-400/30">Expert AI Advice</span>
         </div>
       </div>
     </header>

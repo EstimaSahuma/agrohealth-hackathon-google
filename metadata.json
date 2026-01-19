@@ -1,6 +1,6 @@
 {
-  "name": "AgroLens AI: Plant Doctor",
-  "description": "A smart AI system for farmers and gardeners to detect pests, diseases, and nutrient deficiencies in crops using Gemini 3 vision capabilities.",
+  "name": "PlantDoctor AI",
+  "description": "A simple way for farmers to find and fix plant pests, diseases, and nutrient problems instantly.",
   "requestFramePermissions": [
     "camera"
   ]
